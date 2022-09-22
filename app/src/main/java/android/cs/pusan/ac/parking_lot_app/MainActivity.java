@@ -2,6 +2,7 @@ package android.cs.pusan.ac.parking_lot_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -154,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void colorbynum(int building_usage, int building_capacity, Button building_button){
         int color = 0;
-        if (building_usage <= (building_capacity * 1)/9) color = Color.parseColor("#49B577");
+        if (building_usage <= building_capacity/9) color = Color.parseColor("#49B577");
         else if (building_usage <= (building_capacity * 2)/9) color = Color.parseColor("#71B16B");
         else if (building_usage <= (building_capacity * 3)/9) color = Color.parseColor("#9DAC5E");
         else if (building_usage <= (building_capacity * 4)/9) color = Color.parseColor("#C5A852");
@@ -163,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         else if (building_usage <= (building_capacity * 7)/9) color = Color.parseColor("#D6643A");
         else if (building_usage <= (building_capacity * 8)/9) color = Color.parseColor("#CA4536");
         else if (building_usage <= building_capacity) color = Color.parseColor("#BC2431");
-        Drawable circle_button = getResources().getDrawable(R.drawable.circle_button);
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable circle_button = getResources().getDrawable(R.drawable.circle_button);
         circle_button.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
         building_button.setBackground(circle_button);
     }
